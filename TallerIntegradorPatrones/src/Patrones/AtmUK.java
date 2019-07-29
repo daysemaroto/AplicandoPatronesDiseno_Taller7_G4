@@ -8,9 +8,13 @@ package Patrones;
 import java.util.ArrayList;
 import java.util.Currency;
 import java.util.Locale;
+import java.util.Scanner;
 
 public class AtmUK {
-    protected final Currency currency=Locale.UK;
+    
+    public static Scanner in = new Scanner(System.in);
+    
+    protected final Currency currency=Currency.getInstance(Locale.UK);
     protected double dinero = 0;
     protected ArrayList <Manejador> manejadores; // Cada manejador puede entregar dinero de una sola denominación
 
@@ -100,7 +104,7 @@ public class AtmUK {
     }
     public static void anotherTransaction(Account cuenta){
         System.out.println("Do you want another transaction?\n\nPress 1 for another transaction\n2 To exit");
-        anotherTransaction = in.nextInt();
+        int anotherTransaction = in.nextInt();
         if(anotherTransaction == 1){
             transaction(cuenta); // call transaction method
         } else if(anotherTransaction == 2){
