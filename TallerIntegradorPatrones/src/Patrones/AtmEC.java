@@ -10,7 +10,7 @@ import java.util.Currency;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class AtmUK {
+public class AtmEC {
     
     public static Scanner in = new Scanner(System.in);
     
@@ -19,7 +19,7 @@ public class AtmUK {
     protected ArrayList <Manejador> manejadores; // Cada manejador puede entregar dinero de una sola denominación
 
     // -----------------
-    public AtmUK() {
+    public AtmEC() {
       manejadores = new ArrayList<Manejador>();
     }
     // -----------------
