@@ -9,6 +9,7 @@ public class ManejadorDinero implements Manejador
 {
     protected int monto;
     protected double denominacion;
+    public Manejador next;
 
     public ManejadorDinero(int monto, int denominacion){
         this.monto = monto; // Total de billetes/moneda
@@ -21,7 +22,7 @@ public class ManejadorDinero implements Manejador
     
     @Override
     public void setNext(Manejador m){
-        
+        this.next=m;
     }
 
     @Override
@@ -32,8 +33,18 @@ public class ManejadorDinero implements Manejador
     
     @Override
     public boolean depositar(int monto, double denominacion){
-        // Implementar
-        return false;
+        if(this.denominacion== denominacion)
+        {
+            this.monto = this.monto + monto;
+	    return true;
+        }
+        else
+        {
+            if (this.next == null)
+                return false;
+            return (this.next.depositar(monto, denominacion));
+        }
+     
     }
 
  
