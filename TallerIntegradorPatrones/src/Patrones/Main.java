@@ -5,8 +5,12 @@
  */
 package Patrones;
 
+import java.util.ArrayList;
+
 public class Main
 {
+    
+    public static ArrayList<Account> accounts = new ArrayList();
     public static void main(String[] args)
     {
         // Crear un único cajero Automático de dólares con 100 billetes de 20, 100 de 10, 
@@ -18,6 +22,17 @@ public class Main
         
         // Mostrar el menú para realizar transacciones en el cajero automático
     }
+    
+    public static Account getAccountById(int id){
+        for(Account a : accounts){
+            if(a.getId() == id)
+                return a;
+        }
+        return null;
+    }
+            
+    
+    
 
     
 }

@@ -6,7 +6,9 @@
 package Adapter;
 
 import Patrones.Account;
+import Patrones.Main;
 import java.util.Currency;
+import java.util.Locale;
 
 /**
  *
@@ -17,7 +19,8 @@ public class CuentaAdapter implements Cuenta{
     protected Currency moneda;
     
     public CuentaAdapter(int id, double monto){
-        
+        cuenta = Main.getAccountById(id);
+        moneda = Currency.getInstance(Locale.US);
     }
     @Override
     public double balance() {
@@ -35,7 +38,7 @@ public class CuentaAdapter implements Cuenta{
     }
 
     @Override
-    public boolean depositar(int n, int denominacion) {
+    public boolean depositar(int n, double denominacion) {
         double montoUk = n*denominacion/1.22;
         String response = cuenta.deposit(montoUk);
         return true;

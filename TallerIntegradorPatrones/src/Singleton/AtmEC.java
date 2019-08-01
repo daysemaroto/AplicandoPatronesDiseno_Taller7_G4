@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Patrones;
+package Singleton;
 
+import Patrones.Account;
+import ChainOfResponsability.ManejadorDinero;
 import java.util.ArrayList;
 import java.util.Currency;
 import java.util.Locale;
@@ -13,16 +15,22 @@ import java.util.Scanner;
 public class AtmEC {
     
     public static Scanner in = new Scanner(System.in);
-    
-    protected final Currency currency=Currency.getInstance(Locale.UK);
-    protected double dinero = 0;
-    protected ArrayList <Manejador> manejadores; // Cada manejador puede entregar dinero de una sola denominación
+    public AtmEC instance = null;
+    private final Currency currency =Currency.getInstance(Locale.US);
+    private double dinero = 0;
+    private ManejadorDinero manejador; // Cada manejador puede entregar dinero de una sola denominación
 
     // -----------------
-    public AtmEC() {
-      manejadores = new ArrayList<Manejador>();
+    private AtmEC() {
+      
     }
     // -----------------
+    public AtmEC getInstace(){ 
+        if(instance == null)
+            instance = new AtmEC();
+        return instance;
+    }
+    //------------------
     public double getTotal() {
         return this.dinero;
     }
@@ -39,11 +47,11 @@ public class AtmEC {
         // Todo: Sólo se puede depositar billetes de una sola denominación y agregarse al manejador correspondiente
     }
 
-    public void addManejador(Manejador m){
-        manejadores.add(m);
+    public void addManejador(ManejadorDinero m){
+        
     }
-    public Manejador removeManejador(int i){
-        return manejadores.remove(i);
+    public ManejadorDinero removeManejador(int i){
+        return null;
     }
 
     //Dentro de las transacciones se debe llamar al ATM para hacer el retiro o deposito de la cuenta correspondiente
@@ -105,13 +113,17 @@ public class AtmEC {
     public static void anotherTransaction(Account cuenta){
         System.out.println("Do you want another transaction?\n\nPress 1 for another transaction\n2 To exit");
         int anotherTransaction = in.nextInt();
-        if(anotherTransaction == 1){
-            transaction(cuenta); // call transaction method
-        } else if(anotherTransaction == 2){
-            System.out.println("Thanks for choosing us. Good Bye!");
-        } else {
-            System.out.println("Invalid choice\n\n");
-            anotherTransaction(cuenta);
+        switch (anotherTransaction) {
+            case 1:
+                transaction(cuenta); // call transaction method
+                break;
+            case 2:
+                System.out.println("Thanks for choosing us. Good Bye!");
+                break;
+            default:
+                System.out.println("Invalid choice\n\n");
+                anotherTransaction(cuenta);
+                break;
         }
     }
 

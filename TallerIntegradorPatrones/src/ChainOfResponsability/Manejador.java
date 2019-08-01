@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Adapter;
+package ChainOfResponsability;
 
 /**
  *
  * @author JordyVillao
  */
-public interface Cuenta {
-    public double balance();
-    public boolean retiro(double monto);
+public interface Manejador {
+    public void setNext(Manejador m);
+    public boolean retirar(double monto);
     public boolean depositar(int n, double denominacion);
 }
