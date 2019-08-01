@@ -13,4 +13,5 @@ public interface Cuenta {
     public double balance();
     public boolean retiro(double monto);
     public boolean depositar(int n, double denominacion);
+    
 }
