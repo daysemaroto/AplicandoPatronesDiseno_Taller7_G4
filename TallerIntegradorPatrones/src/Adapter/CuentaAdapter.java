@@ -14,15 +14,17 @@ import java.util.Locale;
  *
  * @author JordyVillao
  */
-public class CuentaAdapter implements Cuenta{
+public class CuentaAdapter implements Cuenta {
+
     protected Account cuenta;
     protected Currency moneda;
-    
-    public CuentaAdapter(int id, double monto){
+
+    public CuentaAdapter(int id, double monto) {
         //cuenta = Main.getAccountById(id);
         cuenta = new Account(id, monto);
         moneda = Currency.getInstance(Locale.US);
     }
+
     @Override
     public double balance() {
         return cuenta.getAmount();
@@ -30,30 +32,26 @@ public class CuentaAdapter implements Cuenta{
 
     @Override
     public boolean retiro(double monto) {
-        double montoUk = monto/1.22;
+        double montoUk = monto / 1.22;
         String response = cuenta.withdraw(montoUk);
-        if(response.contains("Error"))
+        if (response.contains("Error")) {
             return false;
-        else
+        } else {
             return true;
+        }
     }
 
     @Override
     public boolean depositar(int n, double denominacion) {
-        double montoUk = n*denominacion/1.22;
+        double montoUk = n * denominacion / 1.22;
         String response = cuenta.deposit(montoUk);
         return true;
     }
 
     @Override
     public int getId() {
-        
+
         return cuenta.getId();
     }
-    
-   
-    
-    
-    
-    
+
 }

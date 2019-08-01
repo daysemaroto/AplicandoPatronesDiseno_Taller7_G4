@@ -10,9 +10,14 @@ package ChainOfResponsability;
  * @author JordyVillao
  */
 public interface Manejador {
-   void setNext(Manejador manejador);
+
+    void setNext(Manejador manejador);
+
     public double getMoney();
+
     public Manejador getNext();
+
     boolean retirar(double monto);
+
     boolean depositar(int n, double denominacion);
 }

@@ -21,15 +21,12 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-public class Main extends Application{
+public class Main extends Application {
 
     public static ArrayList<Cuenta> accounts = new ArrayList();
-    
+
     public static AtmEC cajero = AtmEC.getInstance();
 
-    
-    
-    
     @Override
     public void start(Stage primaryStage) {
 //        Button btn = new Button();
@@ -50,11 +47,9 @@ public class Main extends Application{
 //        primaryStage.setTitle("Hello World!");
 //        primaryStage.setScene(scene);
 //        primaryStage.show();
-        
 
-    // Crear un único cajero Automático de dólares con 100 billetes de 20, 100 de 10, 
+        // Crear un único cajero Automático de dólares con 100 billetes de 20, 100 de 10, 
         // 10 monedas de 0.50, 10 de 0.25 y 1000 de 0.05
-
         ManejadorDinero billete20 = new ManejadorDinero(100, 20);
         ManejadorDinero billete10 = new ManejadorDinero(100, 10);
         ManejadorDinero moneda50 = new ManejadorDinero(10, 0.5);
@@ -94,15 +89,15 @@ public class Main extends Application{
 //        Cuenta cuentaA9 = new CuentaAdapter(cuenta9);
 //        Cuenta cuentaA10 = new CuentaAdapter(cuenta10);
         Cuenta cuentaA1 = new CuentaAdapter(1, 100);
-        Cuenta cuentaA2 = new CuentaAdapter(1, 200);
-        Cuenta cuentaA3 = new CuentaAdapter(1, 300);
-        Cuenta cuentaA4 = new CuentaAdapter(1, 400);
-        Cuenta cuentaA5 = new CuentaAdapter(1, 500);
-        Cuenta cuentaA6 = new CuentaAdapter(1, 600);
-        Cuenta cuentaA7 = new CuentaAdapter(1, 700);
-        Cuenta cuentaA8 = new CuentaAdapter(1, 800);
-        Cuenta cuentaA9 = new CuentaAdapter(1, 900);
-        Cuenta cuentaA10 = new CuentaAdapter(1, 1000);
+        Cuenta cuentaA2 = new CuentaAdapter(2, 200);
+        Cuenta cuentaA3 = new CuentaAdapter(3, 300);
+        Cuenta cuentaA4 = new CuentaAdapter(4, 400);
+        Cuenta cuentaA5 = new CuentaAdapter(5, 500);
+        Cuenta cuentaA6 = new CuentaAdapter(6, 600);
+        Cuenta cuentaA7 = new CuentaAdapter(7, 700);
+        Cuenta cuentaA8 = new CuentaAdapter(8, 800);
+        Cuenta cuentaA9 = new CuentaAdapter(9, 900);
+        Cuenta cuentaA10 = new CuentaAdapter(10, 1000);
 
 //        accounts.add(cuenta1);
 //        accounts.add(cuenta2);
@@ -128,17 +123,15 @@ public class Main extends Application{
         // Menú principal para seleccionar una de las 10 cuentas solo con el id
         // Mostrar el menú para realizar transacciones en el cajero automático
         menuPrincipal();
-
+        System.exit(0); 
 
     }
 
-    
     public static void main(String[] args) {
         launch(args);
         
         
-   
-        
+
     }
 
     public static Cuenta getAccountById(int id) {
@@ -168,9 +161,10 @@ public class Main extends Application{
             System.out.println(Color.ANSI_RED + "Ingrese opcion:");
             opcion = entradaPorTeclado.nextLine();
             while (validarOpcion(opcion, 2)) {
-                System.out.println("Ingrese una opcion correcta.");
-                System.out.println("1. Ingresar con el id de una cuenta bancaria");
-                System.out.println("2. Salir");
+                System.out.println(Color.ANSI_RED + "Ingrese una opcion correcta.");
+                System.out.println(Color.ANSI_BLUE + "1. Ingresar con el id de una cuenta bancaria");
+                System.out.println(Color.ANSI_BLUE + "2. Salir");
+                System.out.println(Color.ANSI_RED + "Ingrese opcion:");
                 opcion = entradaPorTeclado.nextLine();
             }
             switch (opcion) {
@@ -182,6 +176,7 @@ public class Main extends Application{
                     break;
 
             }
+           
         }
     }
 
@@ -192,6 +187,8 @@ public class Main extends Application{
         String id = entradaPorTeclado.nextLine();
         if (Integer.parseInt(id) > 0 & Integer.parseInt(id) < 11) {
             Cuenta a = getAccountById(Integer.parseInt(id));
+            //System.out.println(a);
+            //System.out.println(accounts);
             cajero.transaction(a);
 
         }
@@ -201,7 +198,5 @@ public class Main extends Application{
         }
 
     }
-
-    
 
 }
