@@ -5,6 +5,8 @@
  */
 package ChainOfResponsability;
 
+import Singleton.AtmEC;
+
 public class ManejadorDinero implements Manejador
 {
     private Manejador next;
@@ -30,6 +32,8 @@ public class ManejadorDinero implements Manejador
             return next.retirar(monto);
         }else if(cantRetiro>cantidad)
             return false;
+        
+        
         
         double faltante = monto - (denominacion*cantRetiro);
         boolean isValid = true;

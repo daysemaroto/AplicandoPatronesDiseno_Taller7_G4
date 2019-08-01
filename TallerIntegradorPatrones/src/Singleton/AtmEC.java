@@ -9,6 +9,7 @@ import Adapter.Cuenta;
 import ChainOfResponsability.Manejador;
 import Patrones.Account;
 import ChainOfResponsability.ManejadorDinero;
+import Patrones.Color;
 import java.util.ArrayList;
 import java.util.Currency;
 import java.util.Locale;
@@ -70,17 +71,17 @@ public class AtmEC {
            return null;
        }
        
-       public static void transaction(Cuenta cuenta){
+       public  void transaction(Cuenta cuenta){
         cuentaAdap = cuenta;
         // here is where most of the work is
         Scanner in= new Scanner(System.in);
         int choice; 
-        System.out.println("Please select an option"); 
-        System.out.println("1. Withdraw");
-        System.out.println("2. Deposit");
-        System.out.println("3. Balance");
-        System.out.println("4. Balance ATM");
-        System.out.print("opcion: ");
+        System.out.println(Color.ANSI_RED +"Please select an option"); 
+        System.out.println(Color.ANSI_BLUE +"1. Withdraw");
+        System.out.println(Color.ANSI_BLUE +"2. Deposit");
+        System.out.println(Color.ANSI_BLUE +"3. Balance");
+        System.out.println(Color.ANSI_BLUE +"4. Balance ATM");
+        System.out.println(Color.ANSI_RED + "Ingrese opcion:");
         choice = in.nextInt();
         in.nextLine();
         switch(choice){
@@ -149,7 +150,7 @@ public class AtmEC {
         System.out.println("Do you want another transaction?\n\nPress 1 for another transaction\n2 To exit");
         op = in.nextInt();
         if (op == 1) {
-            transaction(cuenta); // call transaction method
+            instance.transaction(cuenta); // call transaction method
         } else if (op == 2) {
             System.out.println("Thanks for choosing us. Good Bye!");
             cuentaAdap = null;
@@ -166,4 +167,10 @@ public class AtmEC {
            }
            dinero = monto;
        }
+
+    public static Cuenta getCuentaAdap() {
+        return cuentaAdap;
+    }
+       
+       
 }

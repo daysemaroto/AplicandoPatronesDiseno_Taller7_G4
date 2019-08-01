@@ -19,7 +19,8 @@ public class CuentaAdapter implements Cuenta{
     protected Currency moneda;
     
     public CuentaAdapter(int id, double monto){
-        cuenta = Main.getAccountById(id);
+        //cuenta = Main.getAccountById(id);
+        cuenta = new Account(id, monto);
         moneda = Currency.getInstance(Locale.US);
     }
     @Override
@@ -43,6 +44,16 @@ public class CuentaAdapter implements Cuenta{
         String response = cuenta.deposit(montoUk);
         return true;
     }
+
+    @Override
+    public int getId() {
+        
+        return cuenta.getId();
+    }
+    
+   
+    
+    
     
     
 }

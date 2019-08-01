@@ -5,6 +5,8 @@
  */
 package Adapter;
 
+import Patrones.Account;
+
 /**
  *
  * @author JordyVillao
@@ -14,4 +16,6 @@ public interface Cuenta {
     public boolean retiro(double monto);
     public boolean depositar(int n, double denominacion);
     
+  public int getId();
+
 }
