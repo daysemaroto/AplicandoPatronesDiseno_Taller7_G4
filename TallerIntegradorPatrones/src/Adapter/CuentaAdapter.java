@@ -21,7 +21,7 @@ public class CuentaAdapter implements Cuenta {
 
     public CuentaAdapter(int id, double monto) {
         //cuenta = Main.getAccountById(id);
-        cuenta = new Account(id, monto*1.22);
+        cuenta = new Account(id, monto);
         moneda = Currency.getInstance(Locale.US);
     }
 
@@ -32,19 +32,27 @@ public class CuentaAdapter implements Cuenta {
 
     @Override
     public boolean retiro(double monto) {
-        double montoUk = monto / 1.22;
-        String response = cuenta.withdraw(montoUk);
-        if (response.contains("Error")) {
+        String response = cuenta.withdraw(monto);
+        int position = response.indexOf(" ");
+        String info = response.substring(position);
+        if(response.contains("Error")){
+            String finalResponse = "Error:" + moneda.getCurrencyCode() + info;
+            System.out.println(finalResponse);
             return false;
-        } else {
+        }else{
+            String finalResponse = moneda.getCurrencyCode() + info;
+            System.out.println(finalResponse);
             return true;
         }
     }
 
     @Override
     public boolean depositar(int n, double denominacion) {
-        double montoUk = n * denominacion / 1.22;
-        String response = cuenta.deposit(montoUk);
+        String response = cuenta.deposit(n*denominacion);
+        int position = response.indexOf(" ");
+        String info = response.substring(position);
+        String finalResponse = moneda.getCurrencyCode() + info;
+        System.out.println(finalResponse);
         return true;
     }
 

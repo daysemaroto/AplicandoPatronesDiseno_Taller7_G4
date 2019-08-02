@@ -20,8 +20,8 @@ public class AtmEC {
     private static AtmEC instance = new AtmEC();
     private Currency moneda;
     private static double dinero; //13057.5
-    private static Manejador manejador;
-    private static Cuenta cuentaAdap;
+    private Manejador manejador;
+    private Cuenta cuentaAdap;
 
     private AtmEC() {
         moneda = Currency.getInstance(Locale.US);
@@ -120,7 +120,7 @@ public class AtmEC {
                     this.addManejador(new ManejadorDinero(deposit, n));
                     updateMoney();
                     System.out.println("The deposit was made succesfully");
-                    System.out.printf("You have deposit $%.2f and your new balance is $%.2f\n", (n * deposit), cuenta.balance());
+                    System.out.printf("You have deposited $%.2f and your new balance is $%.2f\n", (n * deposit), cuenta.balance());
                 } else {
                     System.out.println("There was a problem while depositing the money.");
                 }
@@ -133,6 +133,11 @@ public class AtmEC {
             case 4:
                 System.out.printf("The ATM balance is $%.2f\n", dinero);
                 // Todo: mostrar el balance del ATM con los billetes en cada manejador
+                ManejadorDinero next = (ManejadorDinero)this.manejador;
+                while(next != null){
+                    System.out.printf("Cantidad de billetes/monedas de $%d : %d\n",(int)next.getDenominacion(),next.getCantidad());
+                    next = (ManejadorDinero)next.getNext();
+                }
                 anotherTransaction(cuenta);
                 break;
             default:
@@ -142,7 +147,7 @@ public class AtmEC {
         }
     }
 
-    public static void anotherTransaction(Cuenta cuenta) {
+    public  void anotherTransaction(Cuenta cuenta) {
 
         Scanner in = new Scanner(System.in);
         int op;
@@ -159,7 +164,7 @@ public class AtmEC {
         }
     }
 
-    public static void updateMoney() {
+    public void updateMoney() {
         double monto = 0.0;
         for (Manejador m = manejador; m != null; m = m.getNext()) {
             monto += m.getMoney();
@@ -167,7 +172,7 @@ public class AtmEC {
         dinero = monto;
     }
 
-    public static Cuenta getCuentaAdap() {
+    public Cuenta getCuentaAdap() {
         return cuentaAdap;
     }
 

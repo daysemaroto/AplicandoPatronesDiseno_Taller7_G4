@@ -75,5 +75,13 @@ public class ManejadorDinero implements Manejador {
     public double getMoney() {
         return cantidad * denominacion;
     }
+    
+    public int getCantidad(){
+        return this.cantidad;
+    }
+    
+    public double getDenominacion(){
+        return this.denominacion;
+    }
 
 }
