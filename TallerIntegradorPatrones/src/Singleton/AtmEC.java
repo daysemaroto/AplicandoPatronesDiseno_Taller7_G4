@@ -93,7 +93,7 @@ public class AtmEC {
                 } else {
                     // verificar que se puede realizar el retiro del atm
                     if (amount < cuenta.balance() && instance.sacarDinero(amount)) {
-                     
+
                         System.out.println("The withdraw was made succesfully");
                         cuenta.retiro(amount);
                         updateMoney();
@@ -109,14 +109,14 @@ public class AtmEC {
                 double n;
                 int deposit;
                 System.out.print("Enter the denomination to deposit: ");
-                n = in.nextInt();
+                n = in.nextDouble();
                 in.nextLine();
                 System.out.print("Enter the amount of denomination to deposit: ");
                 deposit = in.nextInt();
                 in.nextLine();
                 //if (instance.sacarDinero(deposit)) {
                 if (instance.ingresarDinero(deposit, n)) {
-                    cuenta.depositar(deposit,n);
+                    cuenta.depositar(deposit, n);
                     this.addManejador(new ManejadorDinero(deposit, n));
                     updateMoney();
                     System.out.println("The deposit was made succesfully");
@@ -133,10 +133,11 @@ public class AtmEC {
             case 4:
                 System.out.printf("The ATM balance is $%.2f\n", dinero);
                 // Todo: mostrar el balance del ATM con los billetes en cada manejador
-                ManejadorDinero next = (ManejadorDinero)this.manejador;
-                while(next != null){
-                    System.out.printf("Cantidad de billetes/monedas de $%d : %d\n",(int)next.getDenominacion(),next.getCantidad());
-                    next = (ManejadorDinero)next.getNext();
+                ManejadorDinero next = (ManejadorDinero) this.manejador;
+                while (next != null) {
+//                    System.out.printf("Cantidad de billetes/monedas de $%d : %d\n",(int)next.getDenominacion(),next.getCantidad());
+                    System.out.printf("Cantidad de billetes/monedas de $%.2f : %d\n", next.getDenominacion(), next.getCantidad());
+                    next = (ManejadorDinero) next.getNext();
                 }
                 anotherTransaction(cuenta);
                 break;
@@ -147,11 +148,11 @@ public class AtmEC {
         }
     }
 
-    public  void anotherTransaction(Cuenta cuenta) {
+    public void anotherTransaction(Cuenta cuenta) {
 
         Scanner in = new Scanner(System.in);
         int op;
-        System.out.println(Color.ANSI_RED +"Do you want another transaction?\nPress 1 for another transaction\nPress 2 To exit");
+        System.out.println(Color.ANSI_RED + "Do you want another transaction?\nPress 1 for another transaction\nPress 2 To exit");
         op = in.nextInt();
         if (op == 1) {
             instance.transaction(cuenta); // call transaction method
