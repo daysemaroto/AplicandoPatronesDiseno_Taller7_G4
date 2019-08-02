@@ -18,7 +18,13 @@ public class CuentaAdapter implements Cuenta {
 
     protected Account cuenta;
     protected Currency moneda;
+    public Account getCuenta() {
+        return cuenta;
+    }
 
+    public Currency getMoneda() {
+        return moneda;
+    }
     public CuentaAdapter(int id, double monto) {
         //cuenta = Main.getAccountById(id);
         cuenta = new Account(id, monto);
@@ -32,8 +38,7 @@ public class CuentaAdapter implements Cuenta {
 
     @Override
     public boolean retiro(double monto) {
-        double montoUk = monto / 1.22;
-        String response = cuenta.withdraw(montoUk);
+        String response = cuenta.withdraw(monto);
         if (response.contains("Error")) {
             return false;
         } else {
@@ -43,8 +48,8 @@ public class CuentaAdapter implements Cuenta {
 
     @Override
     public boolean depositar(int n, double denominacion) {
-        double montoUk = n * denominacion / 1.22;
-        String response = cuenta.deposit(montoUk);
+        System.out.println("Depositando");
+        cuenta.deposit(n*denominacion);
         return true;
     }
 
