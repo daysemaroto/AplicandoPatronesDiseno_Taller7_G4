@@ -61,6 +61,7 @@ public class ManejadorDinero implements Manejador {
             System.out.printf("Deposit: %d de $%.2f.\n", n, this.denominacion);
             return true;
         } else if (next == null) {
+            System.out.println("no entro we");
             return false; // no existe el tipo de moneda o billete ingresado
         } else {
             return next.depositar(n, denominacion);

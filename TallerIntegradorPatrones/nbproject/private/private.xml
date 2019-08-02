@@ -3,7 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/DAYSE_MAROTO/ESCRITORIO/ESPOL/DISEÑO%20DE%20SOFTWARE/TALLERES/TALLER7_2AplicarPatronesDiseño/TallerIntegradorPatrones/src/Patrones/Main.java</file>
+            <file>file:/C:/Users/gianc/Desktop/Nueva%20carpeta/AplicandoPatronesDiseno_Taller7_G4/TallerIntegradorPatrones/src/Patrones/Main.java</file>
+            <file>file:/C:/Users/gianc/Desktop/Nueva%20carpeta/AplicandoPatronesDiseno_Taller7_G4/TallerIntegradorPatrones/src/Patrones/Account.java</file>
+            <file>file:/C:/Users/gianc/Desktop/Nueva%20carpeta/AplicandoPatronesDiseno_Taller7_G4/TallerIntegradorPatrones/src/Patrones/Validaciones.java</file>
+            <file>file:/C:/Users/gianc/Desktop/Nueva%20carpeta/AplicandoPatronesDiseno_Taller7_G4/TallerIntegradorPatrones/src/Adapter/CuentaAdapter.java</file>
+            <file>file:/C:/Users/gianc/Desktop/Nueva%20carpeta/AplicandoPatronesDiseno_Taller7_G4/TallerIntegradorPatrones/src/ChainOfResponsability/Manejador.java</file>
+            <file>file:/C:/Users/gianc/Desktop/Nueva%20carpeta/AplicandoPatronesDiseno_Taller7_G4/TallerIntegradorPatrones/src/ChainOfResponsability/ManejadorDinero.java</file>
+            <file>file:/C:/Users/gianc/Desktop/Nueva%20carpeta/AplicandoPatronesDiseno_Taller7_G4/TallerIntegradorPatrones/src/Singleton/AtmEC.java</file>
+            <file>file:/C:/Users/gianc/Desktop/Nueva%20carpeta/AplicandoPatronesDiseno_Taller7_G4/TallerIntegradorPatrones/src/Patrones/Color.java</file>
+            <file>file:/C:/Users/gianc/Desktop/Nueva%20carpeta/AplicandoPatronesDiseno_Taller7_G4/TallerIntegradorPatrones/src/Adapter/Cuenta.java</file>
         </group>
     </open-files>
 </project-private>

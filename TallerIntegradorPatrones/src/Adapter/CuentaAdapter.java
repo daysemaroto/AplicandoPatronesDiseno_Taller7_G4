@@ -18,7 +18,13 @@ public class CuentaAdapter implements Cuenta {
 
     protected Account cuenta;
     protected Currency moneda;
+    public Account getCuenta() {
+        return cuenta;
+    }
 
+    public Currency getMoneda() {
+        return moneda;
+    }
     public CuentaAdapter(int id, double monto) {
         //cuenta = Main.getAccountById(id);
         cuenta = new Account(id, monto);
