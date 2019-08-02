@@ -21,7 +21,7 @@ public class CuentaAdapter implements Cuenta {
 
     public CuentaAdapter(int id, double monto) {
         //cuenta = Main.getAccountById(id);
-        cuenta = new Account(id, monto);
+        cuenta = new Account(id, monto*1.22);
         moneda = Currency.getInstance(Locale.US);
     }
 
